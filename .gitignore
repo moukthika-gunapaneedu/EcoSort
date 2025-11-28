@@ -7,3 +7,6 @@ model_weights/
 .vscode/
 *.pth
 *.h5
+
+# unignore sample raw dataset
+!data/sample_raw/

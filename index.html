@@ -357,21 +357,57 @@
         grid-template-columns: 1fr;
       }
     }
+    
+    /* Shared image box for intro cards */
+      .intro-image {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;              /* clip image corners */
+        border: 1px solid #d1d5db;
+        background: #ffffff;
+        padding: 4px;                  /* small, tight frame */
+      }
 
-    .intro-image {
-      width: 100%;
-      height: 100%;
-      max-height: 420px;  /* prevents overflow */
-      overflow: hidden;
-      border-radius: 12px;
+      /* Image itself */
+      .intro-image img {
+        display: block;
+        width: 100%;
+        height: auto;                  /* keep aspect ratio, no cropping */
+        border-radius: 12px;           /* round the actual image corners */
+      }
+
+      /* For images where you want full image visible */
+      .intro-image.contain img {
+        object-fit: contain;           /* don’t crop */
+      }
+
+    .chart-wrapper {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 18px 12px;
+      border: 1px solid #e5e7eb;
+      overflow: visible;           /* no cropping */
     }
 
-    .intro-image img {
+    .chart-wrapper img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;      /* keeps it contained */
-      border-radius: 12px;
+      height: auto;                /* keep aspect ratio */
       display: block;
+      border-radius: 12px;         /* match your theme */
+    }
+
+    /* Tighter padding for this specific image card */
+    .intro-image.tight {
+      padding: 6px;               /* smaller outer padding */
+      border-radius: 14px;        /* outer card rounding */
+      border: 1px solid #d1d5db;  /* keep the clean border */
+      background: #ffffff;
+    }
+
+    /* Image rounding */
+    .intro-image.tight img {
+      border-radius: 12px;        /* round *actual* image corners */
+      object-fit: contain;        /* keep the whole image visible */
     }
 
 
@@ -455,9 +491,9 @@
             Understanding this background shows why small decisions at the bin can have large consequences downstream.
           </p>
         </div>
-        <div class="intro-image extra-pad">
-          <img src="website/waste_management.png" alt="Waste Management System">
-        </div>
+          <div class="intro-image contain">
+            <img src="website/waste_management.png" alt="Waste Management System">
+          </div>
       </div>
 
       <!-- 3. Who is affected -->
@@ -589,31 +625,29 @@
           </div>
 
           <!-- 2. Class distribution bar chart (separate bubble just for image + text) -->
-          <div class="card" style="margin-top: 16px;">
-            <h3>How are the classes distributed?</h3>
+          <div class="card before-after-card">
+          <h3>How are the classes distributed?</h3>
 
-            <div class="intro-image">
-              <img src="website/trash_class_counts.png"
-                  alt="Bar chart showing the number of images in each TrashNet category">
-            </div>
-
-            <p style="text-align: justify; margin-top: 12px;">
-              The bar chart shows how many images are available for each category in the dataset.
-              Some classes, such as <strong>paper</strong> and <strong>plastic</strong>, have noticeably more samples,
-              while others like <strong>trash</strong> and <strong>metal</strong> are smaller and more varied. This imbalance
-              matters because it shapes what the model sees most often during training: large classes
-              provide strong, consistent patterns, while smaller classes demand more careful
-              augmentation and evaluation to avoid the model defaulting to the majority categories.
-            </p>
-
-            <p style="text-align: justify;">
-              Keeping this distribution in mind is important when interpreting EcoSort’s performance.
-              High overall accuracy can hide weaker performance on underrepresented classes, so later
-              sections always report results per class, not just a single aggregate score.
-            </p>
+          <div class="chart-wrapper">
+            <img src="website/trash_class_counts.png"
+                alt="Bar chart showing the number of images in each TrashNet category">
           </div>
 
-
+          <p style="margin-top: 14px;">
+            The bar chart shows how many images are available for each category in the dataset.
+            Some classes, such as <strong>paper</strong> and <strong>plastic</strong>, have noticeably
+            more samples, while others like <strong>trash</strong> and <strong>metal</strong> are smaller
+            and more varied. This imbalance matters because it shapes what the model sees most often
+            during training: large classes provide strong, consistent patterns, while smaller classes
+            demand more careful augmentation and evaluation to avoid the model defaulting to the majority
+            categories.
+          </p>
+          <p>
+            Keeping this distribution in mind is important when interpreting EcoSort’s performance.
+            High overall accuracy can hide weaker performance on underrepresented classes, so later
+            sections always report results per class, not just a single aggregate score.
+          </p>
+        </div>
 
 
         <!-- 3. Cleaning and standardizing -->
