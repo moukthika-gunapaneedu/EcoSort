@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EcoSort – AI-Powered Waste Classification</title>
+  <title>EcoSort</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -55,7 +55,7 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       font-size: 14px;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     nav {
@@ -127,6 +127,43 @@
       border: 1px solid var(--gray-border);
       padding: 20px 20px 22px;
     }
+
+    /* Intro section: card with text on left, image space on right */
+    .intro-card {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 20px;
+    }
+
+    .intro-card .intro-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .intro-card .intro-image {
+      border-radius: 12px;
+      border: 1px dashed #d1d5db;
+      background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+      min-height: 140px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+    }
+
+    /* Stack text and image on small screens */
+    @media (max-width: 800px) {
+      .intro-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
 
     .two-column {
       display: grid;
@@ -238,7 +275,7 @@
 
   <!-- Fixed header -->
   <header>
-    <div class="logo">EcoSort</div>
+    <div class="logo">♻️ EcoSort</div>
     <nav>
       <a href="#introduction">Introduction</a>
       <a href="#data-prep">Data &amp; Prep</a>
@@ -254,7 +291,6 @@
     <!-- Hero -->
     <section class="hero" id="top">
       <div class="section-inner">
-        <div class="section-label">Neural Networks · Sustainability · Computer Vision</div>
         <h1 class="hero-title">EcoSort</h1>
         <p class="hero-tagline">
           An AI-assisted waste classification project that explores how simple images of everyday trash
@@ -262,7 +298,7 @@
         </p>
 
         <div class="hero-meta">
-          <div class="pill">CNN · Image Classification</div>
+          <div class="pill">CNN &amp; Image Classification</div>
           <div class="pill">TrashNet Dataset</div>
           <div class="pill">Recycling &amp; Sustainability</div>
         </div>
@@ -276,42 +312,125 @@
 
     <!-- Introduction -->
     <section id="introduction">
-      <div class="section-inner">
-        <div class="section-label">Section 1 · Introduction</div>
-        <div class="two-column">
-          <div>
-            <h2>Why waste sorting matters</h2>
-            <div class="card">
-              <p>
-                EcoSort focuses on a simple but powerful idea: where our trash goes is rarely an accident.
-                When recyclable items are thrown into the wrong bin, entire loads of material can be
-                contaminated and sent directly to landfills or incinerators instead of being recovered.
-                This mis-sorting happens every day in homes, offices, and public spaces, and the impact
-                quietly adds up over time. Materials that could have been turned into new paper, glass,
-                or plastic products are instead lost, while new resources are extracted to replace them.
-              </p>
-              <p>
-                The goal of this project is not to “perfect” recycling, but to understand how simple,
-                image-based tools might help people and systems make better sorting decisions. In this
-                work, images of everyday items such as bottles, cans, cardboard, and mixed trash are used
-                as inputs to a model that attempts to recognize the category of each object. The broader
-                question is human-centered: if we can teach a computer to distinguish common waste types
-                from a photo, how might that assist communities, campuses, or facilities that are trying
-                to reduce contamination and send less material to landfills?
-              </p>
-            </div>
-          </div>
+    <div class="section-inner">
+      <div class="section-label">Section 1 · Introduction</div>
+      <h2>Understanding everyday waste decisions</h2>
 
-          <div>
-            <div class="image-placeholder">
-              Illustrative idea: a simple diagram of three bins (recycling, compost, landfill)
-              with common items above each bin, showing how mis-sorting pushes recyclables into
-              the wrong stream.
-            </div>
-          </div>
+      <!-- 1. Clearly describe the topic -->
+      <div class="card intro-card">
+        <div class="intro-text">
+          <h3>What is EcoSort about?</h3>
+          <p>
+            EcoSort focuses on a very ordinary moment that most people rarely think about:
+            the second when they stand in front of a set of bins and decide where to throw
+            something away. In that moment, a bottle, cup, or takeout container is 
+            assigned to a path that either keeps it in circulation or sends it straight to a
+            landfill. The topic of this project is not about technology first, but about these
+            daily choices and the streams of material they create. By paying close attention
+            to how items are sorted, we can better understand how much potential value is
+            casually discarded. EcoSort uses images of everyday trash as a way to look more
+            carefully at these decisions and the patterns hidden inside them.
+          </p>
+        </div>
+        <div class="intro-image">
+          Space for an image of a person standing in front of multiple bins
+          (recycling, landfill, compost) trying to decide where to throw an item.
         </div>
       </div>
-    </section>
+
+      <!-- 2. Topic background -->
+      <div class="card intro-card">
+        <div class="intro-text">
+          <h3>Background: how waste systems work</h3>
+          <p>
+            Modern cities, campuses, and neighborhoods rely on long, complex waste systems
+            that begin at a bin and stretch through trucks, sorting centers, and processing
+            facilities. Once materials leave our hands, they pass through conveyor belts,
+            workers, and machines that try to separate what can be reused from what must be
+            buried or burned. These systems function best when items arrive in the right
+            stream, such as clean glass in glass containers and cardboard in paper recycling.
+            When the wrong items appear in the wrong place, the quality of the whole batch
+            can drop. Understanding this background helps explain why small sorting mistakes
+            at the bin can echo throughout the rest of the system.
+          </p>
+        </div>
+        <div class="intro-image">
+          Space for a diagram or photo showing the journey of waste:
+          bin → truck → sorting facility → recycling or landfill.
+        </div>
+      </div>
+
+      <!-- 3. Who is affected -->
+      <div class="card intro-card">
+        <div class="intro-text">
+          <h3>Who is affected by mis-sorted waste?</h3>
+          <p>
+            When waste is mis-sorted, the impact is shared by many different groups of
+            people. Residents and students may feel that they are doing the right thing by
+            placing items in a recycling bin, only to learn later that contamination caused
+            the entire load to be discarded. Workers at sorting facilities face additional
+            effort and potential safety risks when they have to pull out items that never
+            should have entered a particular stream. Local governments and building managers
+            may pay higher fees when loads are rejected or when special handling is required.
+            Over time, these combined effects influence taxpayers, rate-payers, and community
+            members who depend on affordable and reliable waste services.
+          </p>
+        </div>
+        <div class="intro-image">
+          Space for an image showing different people affected:
+          residents, facility workers, city staff, and community members.
+        </div>
+      </div>
+
+      <!-- 4. Significance and applications -->
+      <div class="card intro-card">
+        <div class="intro-text">
+          <h3>Why does better sorting matter?</h3>
+          <p>
+            Better waste sorting matters because it directly shapes how many materials stay
+            in use and how many end up as permanent waste. When recyclable items are kept
+            clean and separated, they can be turned into new products, reducing the need to
+            extract fresh raw materials such as timber, metals, and fossil fuels. This can
+            lower energy use, cut emissions, and decrease the environmental damage tied to
+            mining and manufacturing. Well-sorted waste streams also make it easier for
+            cities and organizations to meet their sustainability goals. In everyday terms,
+            clearer sorting means fewer overflowing bins, cleaner shared spaces, and systems
+            that feel trustworthy rather than confusing.
+          </p>
+        </div>
+        <div class="intro-image">
+          Space for an image comparing outcomes:
+          clean recyclables becoming new products versus mixed waste going to landfill.
+        </div>
+      </div>
+
+      <!-- 5. How images connect to the topic (still non-technical) -->
+      <div class="card intro-card">
+        <div class="intro-text">
+          <h3>Where do images fit into this story?</h3>
+          <p>
+            Pictures of trash may seem unremarkable at first, but they offer a clear window
+            into the kinds of objects that move through our bins every day. A single photo
+            can show details such as shape, color, material, labels, and signs of damage or
+            contamination that influence how people decide where an item belongs. By
+            collecting many images of everyday waste, we can begin to see patterns in what
+            people throw away and how similar different items appear to the human eye.
+            These visual patterns hint at how tools, signs, or digital aids might someday
+            support better decisions at the bin. EcoSort treats images as a gentle, visual
+            starting point for thinking more carefully about waste, not as a replacement
+            for education or policy.
+          </p>
+        </div>
+        <div class="intro-image">
+          Space for a collage of item photos:
+          bottles, cups, boxes, cans, and mixed trash on neutral backgrounds.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
 
     <!-- Data & Preparation -->
     <section id="data-prep">
