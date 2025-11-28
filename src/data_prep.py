@@ -14,13 +14,13 @@ BATCH_SIZE = 16
 
 def get_transforms():
     train_transform = transforms.Compose([
-        transforms.Resize(IMAGE_SIZE),
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomRotation(10),
-        transforms.ColorJitter(brightness=0.1, contrast=0.1),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                             std=[0.229, 0.224, 0.225]),
+    transforms.RandomResizedCrop(IMAGE_SIZE, scale=(0.8, 1.0)),
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(10),
+    transforms.ColorJitter(brightness=0.1, contrast=0.1),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                         std=[0.229, 0.224, 0.225]),
     ])
 
     eval_transform = transforms.Compose([

@@ -43,7 +43,7 @@ def evaluate_on_test() -> None:
     _, _, test_loader, class_names = get_dataloaders()
     num_classes = len(class_names)
 
-    model, device = build_model(num_classes=num_classes)
+    model, device = build_model(num_classes=num_classes, model_type="resnet18")
 
     checkpoint = torch.load(WEIGHTS_PATH, map_location=device)
     model.load_state_dict(checkpoint["model_state_dict"])

@@ -124,15 +124,15 @@ def main(num_examples=6):
     num_classes = len(class_names)
 
     # Load model + weights
-    model, device = build_model(num_classes=num_classes)
+    model, device = build_model(num_classes=num_classes, model_type="resnet18")
     checkpoint = torch.load(WEIGHTS_PATH, map_location=device)
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
 
-    # Attach Grad-CAM to the last conv layer in EcoSortCNN
-    # features: [Conv,Bn,ReLU,Pool] x 4 -> last Conv = index 12
-    target_layer = model.features[12]
+    # For ResNet18, last conv layer:
+    target_layer = model.backbone.layer4[-1].conv2
     gradcam = GradCAM(model, target_layer)
+
 
     # Take one batch from test loader
     images, labels = next(iter(test_loader))
