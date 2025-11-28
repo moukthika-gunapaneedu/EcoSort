@@ -290,6 +290,91 @@
       color: var(--text-muted);
       border-top: 1px solid #f3f4f6;
     }
+
+    /* Data & Prep section extras */
+    .data-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* Bubbles for resource links */
+    .data-links {
+      display: flex;
+      flex-direction: column;   /* stacked vertically */
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .link-bubble {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--gray-border);
+      background: #ffffff;
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      width: fit-content;
+    }
+
+    .link-bubble:hover {
+      background: #ecfdf5;
+      border-color: var(--green-soft);
+      color: var(--green-main);
+    }
+
+    /* Before/after bubble below the paragraph card */
+    .before-after-card {
+      margin-top: 16px;
+    }
+
+    .before-after-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .before-after-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .before-after-panel img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      object-fit: cover;
+    }
+
+    @media (max-width: 800px) {
+      .before-after-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .intro-image {
+      width: 100%;
+      height: 100%;
+      max-height: 420px;  /* prevents overflow */
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;      /* keeps it contained */
+      border-radius: 12px;
+      display: block;
+    }
+
+
   </style>
 </head>
 <body>
@@ -436,43 +521,212 @@
   </section>
 
 
-
-
     <!-- Data & Preparation -->
     <section id="data-prep">
       <div class="section-inner">
-        <div class="section-label">Section 2 · Data &amp; Preparation</div>
-        <div class="two-column">
-          <div>
-            <h2>Images of everyday waste</h2>
-            <div class="card">
-              <p>
-                EcoSort uses a public image collection known as the TrashNet dataset. The dataset contains
-                photographs of common waste items placed on a simple background, grouped into six categories:
-                cardboard, glass, metal, paper, plastic, and mixed trash. Each image represents a single item,
-                such as a cardboard box, a plastic bottle, or a crushed can. These labeled examples form the
-                starting point for teaching a model how different types of materials tend to look.
+        <div class="section-label">Section 2</div>
+        <h2>Data and preparation</h2>
+        <p class="data-subtitle">
+          This section describes the dataset behind EcoSort, how the images were gathered and cleaned,
+          and how the final collection was organized for analysis.
+        </p>
+
+        <!-- 1. Dataset overview -->
+        <div class="card">
+          <div class="two-column">
+            <div>
+              <h3>What dataset does EcoSort use?</h3>
+              <p style="text-align: justify;">
+                EcoSort is built on a public image collection known as the
+                <strong>TrashNet dataset</strong>. TrashNet contains photographs of everyday
+                waste items placed on simple backgrounds and grouped into <strong>six categories:
+                cardboard, glass, metal, paper, plastic, and mixed trash.</strong> Each image shows
+                a single object, such as a bottle, can, or piece of cardboard, which makes
+                it easier to see the visual cues people might rely on when sorting.
+                Because the backgrounds are clean and consistent, the images invite the
+                reader to focus on the material itself rather than clutter in the scene.
+                This makes TrashNet a practical starting point for exploring how common
+                materials actually look at the moment someone decides where they belong.
               </p>
-              <p>
-                Before any modeling can happen, the images need to be organized and cleaned. In this project,
-                all photographs are resized to a consistent shape so that they can be processed in the same way.
-                The dataset is then divided into three parts: a training set that the model learns from, a
-                validation set used to tune the model, and a test set reserved for final evaluation. Simple
-                visual checks help confirm that the categories are balanced and that the images are clear,
-                recognizable, and aligned with their labels. Links to the raw and processed data are provided
-                so that others can reproduce these steps.
-              </p>
+
+              <div class="data-links">
+                <a class="link-bubble"
+                  href="https://github.com/garythung/trashnet"
+                  target="_blank" rel="noopener noreferrer">
+                  View original TrashNet dataset
+                </a>
+                <a class="link-bubble"
+                  href="https://www.kaggle.com/datasets/feyzazkefe/trashnet"
+                  target="_blank" rel="noopener noreferrer">
+                  Download resized TrashNet version (Kaggle)
+                </a>
+              </div>
             </div>
-          </div>
-          <div>
-            <div class="image-placeholder">
-              Possible visual: small grid of example images for each class
-              (cardboard, glass, metal, paper, plastic, trash) with labels.
+
+            <div>
+              <div class="intro-image">
+                <img src="website/trashnet.png" alt="Example images from each TrashNet class">
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- 2. Raw structure and first checks -->
+          <div class="card" style="margin-top: 20px;">
+            <h3>What does the raw dataset look like?</h3>
+            <p style="text-align: justify;">
+              In its raw form, the dataset is organized into folders, with one folder
+              for each material type. Within each folder, the objects vary in shape,
+              lighting, and condition, reflecting how items actually appear when people
+              discard them. Some pieces of cardboard are flat while others are crumpled;
+              certain bottles are clear while others are colored or partially crushed.
+              A quick tour through the images helps identify where categories are
+              visually similar, such as thin cardboard that resembles paper or shiny
+              plastic that could be mistaken for metal. These early observations give
+              context for later results and highlight which materials are naturally
+              harder to distinguish at a glance.
+            </p>
+          </div>
+
+          <!-- 2. Class distribution bar chart (separate bubble just for image + text) -->
+          <div class="card" style="margin-top: 16px;">
+            <h3>How are the classes distributed?</h3>
+
+            <div class="intro-image">
+              <img src="website/trash_class_counts.png"
+                  alt="Bar chart showing the number of images in each TrashNet category">
+            </div>
+
+            <p style="text-align: justify; margin-top: 12px;">
+              The bar chart shows how many images are available for each category in the dataset.
+              Some classes, such as <strong>paper</strong> and <strong>plastic</strong>, have noticeably more samples,
+              while others like <strong>trash</strong> and <strong>metal</strong> are smaller and more varied. This imbalance
+              matters because it shapes what the model sees most often during training: large classes
+              provide strong, consistent patterns, while smaller classes demand more careful
+              augmentation and evaluation to avoid the model defaulting to the majority categories.
+            </p>
+
+            <p style="text-align: justify;">
+              Keeping this distribution in mind is important when interpreting EcoSort’s performance.
+              High overall accuracy can hide weaker performance on underrepresented classes, so later
+              sections always report results per class, not just a single aggregate score.
+            </p>
+          </div>
+
+
+
+
+        <!-- 3. Cleaning and standardizing -->
+        <div class="card" style="margin-top: 20px;">
+          <div class="two-column">
+            <div>
+              <h3>How were the images cleaned and prepared?</h3>
+              <p style="text-align: justify;">
+                Before EcoSort can draw any conclusions, the images need to be cleaned and
+                brought into a consistent format. All photographs are resized to the same
+                dimensions so that no item appears larger or smaller simply because of how
+                it was captured. Images are checked for clarity, orientation, and visible
+                content, ensuring that the main object is centered and recognizable.
+                Obvious duplicates or unusable images are set aside to avoid repeating the
+                same example. File names are standardized so that each image can be traced
+                back to its original category without confusion. These steps keep the
+                focus on real visual differences between materials rather than random
+                variation in how photos were taken.
+              </p>
+
+              <div class="data-links">
+                <a class="link-bubble"
+                  href="#"
+                  target="_blank" rel="noopener noreferrer">
+                  Click here for cleaning and preprocessing code
+                </a>
+              </div>
+            </div>
+            <div>
+              <div class="image-placeholder">
+                Suggested visual: simple diagram showing the cleaning pipeline
+                (raw images → resizing → checks → cleaned dataset).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3b. Separate bubble for before/after examples -->
+        <div class="card before-after-card">
+          <h3>Example: before and after cleaning</h3>
+          <div class="before-after-grid">
+            <div class="before-after-panel">
+              <span><strong>Before cleaning</strong></span>
+              <img src="assets/images/before_placeholder.png" alt="Example raw TrashNet image before cleaning">
+            </div>
+            <div class="before-after-panel">
+              <span><strong>After cleaning</strong></span>
+              <img src="assets/images/after_placeholder.png" alt="Same image after resizing and cleaning">
+            </div>
+          </div>
+          <p style="margin-top: 10px;">
+            These side-by-side examples illustrate how the same item looks before and after basic
+            preparation. The goal is not to make the images look perfect, but to remove distractions
+            so that comparisons between materials remain fair and easy to interpret.
+          </p>
+        </div>
+
+        <!-- 4. Splitting the data -->
+        <div class="card" style="margin-top: 20px;">
+          <div class="two-column">
+            <div>
+              <h3>How was the dataset organized for exploration?</h3>
+              <p style="text-align: justify;">
+                After cleaning, the images are divided into three groups that support careful
+                evaluation. The first group is used to explore what typical examples of each
+                category look like. A second group acts as a checkpoint, helping confirm that
+                early impressions still hold up on new images. A third group is kept separate
+                until the very end, so that conclusions can be tested on images that have not
+                been seen before. This split mirrors a natural process: learn from a subset,
+                check your understanding, and then see how well it transfers to unfamiliar
+                cases. Organizing the dataset in this way keeps the exploration honest and
+                reduces the risk of over-fitting to a few memorable examples.
+              </p>
+            </div>
+            <div>
+              <div class="image-placeholder">
+                Suggested visual: simple diagram of the split, e.g.
+                70% training · 15% validation · 15% test, with all categories represented.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Links to data and cleaned versions -->
+        <div class="card" style="margin-top: 20px;">
+          <h3>Data and code access</h3>
+          <p style="text-align: justify;">
+            To keep EcoSort reproducible, all key resources are shared so that others can
+            repeat or extend the work. The original dataset, cleaned image folders, and
+            preparation scripts can be explored directly.
+          </p>
+          <div class="data-links">
+            <a class="link-bubble"
+              href="https://github.com/garythung/trashnet"
+              target="_blank" rel="noopener noreferrer">
+              Original TrashNet dataset
+            </a>
+            <a class="link-bubble"
+              href="#"
+              target="_blank" rel="noopener noreferrer">
+              Cleaned EcoSort image folders (add link)
+            </a>
+            <a class="link-bubble"
+              href="#"
+              target="_blank" rel="noopener noreferrer">
+              EcoSort project repository and source code (add link)
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
+
 
     <!-- Analysis -->
     <section id="analysis">
