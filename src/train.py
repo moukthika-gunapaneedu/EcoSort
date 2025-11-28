@@ -92,7 +92,6 @@ def main():
     patience=2
     )
 
-
     best_val_acc = 0.0
     best_model_path = WEIGHTS_DIR / "ecosort_cnn_best.pth"
 
