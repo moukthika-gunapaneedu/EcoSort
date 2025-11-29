@@ -10,3 +10,4 @@ model_weights/
 
 # unignore sample raw dataset
 !data/sample_raw/
+!data/sample_processed/
