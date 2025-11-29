@@ -611,17 +611,24 @@
           <div class="card" style="margin-top: 20px;">
             <h3>What does the raw dataset look like?</h3>
             <p style="text-align: justify;">
-              In its raw form, the dataset is organized into folders, with one folder
-              for each material type. Within each folder, the objects vary in shape,
-              lighting, and condition, reflecting how items actually appear when people
-              discard them. Some pieces of cardboard are flat while others are crumpled;
-              certain bottles are clear while others are colored or partially crushed.
-              A quick tour through the images helps identify where categories are
-              visually similar, such as thin cardboard that resembles paper or shiny
-              plastic that could be mistaken for metal. These early observations give
-              context for later results and highlight which materials are naturally
-              harder to distinguish at a glance.
+              The raw TrashNet dataset is organized into six folders, one for each material type. 
+              Before any cleaning or splitting, a quick look at the dataset helps understand what the model will see.
             </p>
+
+            <ul style="margin-top: 14px; line-height: 1.6;">
+              <li><strong>Total images:</strong> ~2,527 files across all classes.</li>
+              <li><strong>Number of classes:</strong> 6 (cardboard, glass, metal, paper, plastic, trash).</li>
+              <li><strong>Raw folder structure:</strong> one folder per class, each containing various lighting, shape, and condition variations.</li>
+              <li><strong>Typical image resolution:</strong> varies widely (e.g., 384×512, 512×384, etc.) before resizing.</li>
+              <li><strong>File formats:</strong> mix of JPG and PNG images.</li>
+            </ul>
+              <div class="data-links" style="margin-top: 14px;">
+              <a class="link-bubble"
+                href="https://github.com/moukthika-gunapaneedu/EcoSort/tree/main/data/sample_raw"
+                target="_blank" rel="noopener noreferrer">
+                View sample of the raw image folders (EcoSort)
+              </a>
+            </div>
           </div>
 
           <!-- 2. Class distribution bar chart (separate bubble just for image + text) -->
@@ -633,7 +640,7 @@
                 alt="Bar chart showing the number of images in each TrashNet category">
           </div>
 
-          <p style="margin-top: 14px;">
+          <p style="margin-top: 14px; text-align: justify;">
             The bar chart shows how many images are available for each category in the dataset.
             Some classes, such as <strong>paper</strong> and <strong>plastic</strong>, have noticeably
             more samples, while others like <strong>trash</strong> and <strong>metal</strong> are smaller
@@ -649,40 +656,32 @@
           </p>
         </div>
 
-
         <!-- 3. Cleaning and standardizing -->
         <div class="card" style="margin-top: 20px;">
-          <div class="two-column">
             <div>
               <h3>How were the images cleaned and prepared?</h3>
               <p style="text-align: justify;">
                 Before EcoSort can draw any conclusions, the images need to be cleaned and
-                brought into a consistent format. All photographs are resized to the same
-                dimensions so that no item appears larger or smaller simply because of how
-                it was captured. Images are checked for clarity, orientation, and visible
-                content, ensuring that the main object is centered and recognizable.
-                Obvious duplicates or unusable images are set aside to avoid repeating the
-                same example. File names are standardized so that each image can be traced
-                back to its original category without confusion. These steps keep the
-                focus on real visual differences between materials rather than random
-                variation in how photos were taken.
+                brought into a consistent format.
+                <ul style="margin-top: 12px;">
+                  <li>All images are loaded from their class folders and checked to ensure they contain valid pixel data.</li>
+                  <li>Files are resized to a consistent resolution so each sample has the same dimensions during training.</li>
+                  <li>Images are converted to RGB format to avoid inconsistencies from grayscale or multi-channel inputs.</li>
+                  <li>Orientation and clarity are verified so that the main object remains visible and centered.</li>
+                  <li>Obvious duplicates or corrupted images are filtered out to prevent noisy samples from entering the dataset.</li>
+                  <li>Labels are standardized using folder names so each image can be traced cleanly back to its category.</li>
+                  <li>The cleaned images are then saved into structured folders (train/val/test) for consistent processing throughout the pipeline.</li>
+                </ul>
               </p>
 
               <div class="data-links">
                 <a class="link-bubble"
-                  href="#"
+                  href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/data_prep.py"
                   target="_blank" rel="noopener noreferrer">
                   Click here for cleaning and preprocessing code
                 </a>
               </div>
             </div>
-            <div>
-              <div class="image-placeholder">
-                Suggested visual: simple diagram showing the cleaning pipeline
-                (raw images → resizing → checks → cleaned dataset).
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- 3b. Separate bubble for before/after examples -->
@@ -691,19 +690,68 @@
           <div class="before-after-grid">
             <div class="before-after-panel">
               <span><strong>Before cleaning</strong></span>
-              <img src="assets/images/before_placeholder.png" alt="Example raw TrashNet image before cleaning">
+              <img src="website/Before.png" alt="Example raw TrashNet image before cleaning">
             </div>
             <div class="before-after-panel">
               <span><strong>After cleaning</strong></span>
-              <img src="assets/images/after_placeholder.png" alt="Same image after resizing and cleaning">
+              <img src="website/After.png" alt="Same image after resizing and cleaning">
             </div>
           </div>
+          <div class="image-info-row" style="display: flex; justify-content: space-between; margin-top: 12px;">
+
+          <!-- Left (Raw) -->
+          <div style="width: 48%; text-align: center;">
+            <p style="margin: 0; font-weight: 600;">Original resolution</p>
+            <p style="margin: 4px 0 0 0; color: #555;">512 × 384 pixels (varies by sample)</p>
+          </div>
+
+          <!-- Right (Processed) -->
+          <div style="width: 48%; text-align: center;">
+            <p style="margin: 0; font-weight: 600;">Processed resolution</p>
+            <p style="margin: 4px 0 0 0; color: #555;">224 × 224 pixels (uniform)</p>
+          </div>
+
+        </div>
+
           <p style="margin-top: 10px;">
             These side-by-side examples illustrate how the same item looks before and after basic
-            preparation. The goal is not to make the images look perfect, but to remove distractions
-            so that comparisons between materials remain fair and easy to interpret.
+            preparation.
+          </p>
+          <p style="text-align: justify;">
+            The processed images look very similar to the raw images because the preprocessing step is designed 
+            to standardize the data rather than alter it. EcoSort does not apply any heavy transformations at 
+            this stage. Instead, images are cleaned, resized, and converted to a consistent RGB format while 
+            preserving their original appearance. This ensures that each sample remains visually true to the 
+            real object while still being uniform enough for the model to learn from effectively.
           </p>
         </div>
+
+        <div class="card" style="margin-top: 20px;">
+        <h3>How do the classes look after cleaning?</h3>
+        <p style="text-align: justify;">
+          After preparing the dataset, each category was rechecked for image quality, duplicates, and valid file types.
+          The cleaned dataset is slightly smaller than the raw version because blurred, unusable, or mislabeled images
+          were removed. The bar chart below shows the new distribution across all six categories.
+        </p>
+
+        <div class="chart-wrapper" style="margin-top: 20px;">
+          <img src="website/after_class_counts.png" alt="After-cleaning class distribution bar chart">
+        </div>
+
+        <p style="margin-top: 14px; text-align: justify;">
+          While the overall structure of the dataset remains balanced, small variations appear because invalid files  
+          were filtered out. These quality checks help ensure cleaner training data and reduce noise during model learning.
+        </p>
+
+        <div class="data-links" style="margin-top: 16px;">
+          <a class="link-bubble"
+            href="https://github.com/moukthika-gunapaneedu/EcoSort/tree/main/data/processed"
+            target="_blank" rel="noopener noreferrer">
+            View cleaned (processed) dataset folders
+          </a>
+        </div>
+      </div>
+
 
         <!-- 4. Splitting the data -->
         <div class="card" style="margin-top: 20px;">
