@@ -108,4 +108,4 @@ A narrative write-up of the project, including figures and Grad-CAM examples, is
 
 - Email: `moukthikagunapaneedu@gmail.com`  
 - LinkedIn: https://www.linkedin.com/in/moukthika-gunapaneedu/  
-- Portfolio: https://moukthika.netlify.app  
+- Portfolio: https://moukthika-gunapaneedu.github.io/portfolio-website/
