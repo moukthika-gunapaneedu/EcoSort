@@ -7,9 +7,9 @@
 
   <style>
     :root {
-      --green-main: #166534;       /* deep calm green */
+      --green-main: #166534;     
       --green-soft: #15803d;
-      --gray-bg:   #f5f5f5;       /* light gray cards */
+      --gray-bg:   #f5f5f5;       
       --gray-border: #e5e5e5;
       --text-muted: #4b5563;
       --max-width: 1000px; 
@@ -34,7 +34,6 @@
       text-decoration: none;
     }
 
-    /* Top nav – minimal, low visual weight */
     header {
       position: fixed;
       top: 0;
@@ -75,9 +74,8 @@
       color: var(--green-main);
     }
 
-    /* Layout for sections */
     main {
-      padding-top: 72px; /* space for fixed header */
+      padding-top: 72px;
     }
 
     section {
@@ -128,13 +126,12 @@
       padding: 28px 32px;
     }
 
-    /* Intro section: card with text on left, image space on right */
     .intro-card {
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr); /* more balanced */
-      gap: 36px;  /* larger gap between text + image */
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr); 
+      gap: 36px;
       align-items: stretch;
-      margin-bottom: 32px; /* more spacing between blocks */
+      margin-bottom: 32px;
     }
 
     .intro-card .intro-text {
@@ -158,7 +155,7 @@
       padding: 10px;
     }
 
-    /* default: nice fill (used by last three images) */
+  
     .intro-card .intro-image img {
       width: 100%;
       height: 100%;
@@ -167,7 +164,7 @@
       border-radius: 12px; 
     }
 
-    /* special case: show full image, no cropping (first two blocks) */
+
     .intro-card .intro-image.contain img {
       object-fit: contain;
       padding: 6px;
@@ -175,7 +172,7 @@
     }
 
     .intro-image.extra-pad {
-      padding: 20px !important;     /* slightly more than normal */
+      padding: 20px !important;   
     }
 
     @media (max-width: 800px) {
@@ -256,7 +253,6 @@
       50% { transform: translateY(6px); }
     }
 
-    /* Simple “image” placeholders as gray blocks (you can swap with real images later) */
     .image-placeholder {
       width: 100%;
       min-height: 180px;
@@ -291,18 +287,15 @@
       border-top: 1px solid #f3f4f6;
     }
 
-    /* Data & Prep section extras */
     .data-subtitle {
       font-size: 15px;
       color: var(--text-muted);
       margin-bottom: 18px;
     }
 
-    /* Bubbles for resource links */
     .data-links {
       display: flex;
-      flex-direction: column;   /* stacked vertically */
-      gap: 12px;
+      flex-direction: column;   
       margin-top: 16px;
     }
 
@@ -326,7 +319,6 @@
       color: var(--green-main);
     }
 
-    /* Before/after bubble below the paragraph card */
     .before-after-card {
       margin-top: 16px;
     }
@@ -362,23 +354,22 @@
       .intro-image {
         width: 100%;
         border-radius: 16px;
-        overflow: hidden;              /* clip image corners */
+        overflow: hidden;           
         border: 1px solid #d1d5db;
         background: #ffffff;
-        padding: 4px;                  /* small, tight frame */
+        padding: 4px;             
       }
 
       /* Image itself */
       .intro-image img {
         display: block;
         width: 100%;
-        height: auto;                  /* keep aspect ratio, no cropping */
-        border-radius: 12px;           /* round the actual image corners */
+        height: auto;              
+        border-radius: 12px;       
       }
 
-      /* For images where you want full image visible */
       .intro-image.contain img {
-        object-fit: contain;           /* don’t crop */
+        object-fit: contain;       
       }
 
     .chart-wrapper {
@@ -386,36 +377,149 @@
       border-radius: 18px;
       padding: 16px 18px 12px;
       border: 1px solid #e5e7eb;
-      overflow: visible;           /* no cropping */
+      overflow: visible;         
     }
 
     .chart-wrapper img {
       width: 100%;
-      height: auto;                /* keep aspect ratio */
+      height: auto;                
       display: block;
-      border-radius: 12px;         /* match your theme */
+      border-radius: 12px;   
     }
 
-    /* Tighter padding for this specific image card */
+
     .intro-image.tight {
-      padding: 6px;               /* smaller outer padding */
-      border-radius: 14px;        /* outer card rounding */
-      border: 1px solid #d1d5db;  /* keep the clean border */
+      padding: 6px;               
+      border-radius: 14px;       
+      border: 1px solid #d1d5db; 
       background: #ffffff;
     }
 
-    /* Image rounding */
     .intro-image.tight img {
-      border-radius: 12px;        /* round *actual* image corners */
-      object-fit: contain;        /* keep the whole image visible */
+      border-radius: 12px;       
+      object-fit: contain;        
     }
+
+
+    .gradcam-card {
+      margin-top: 24px;
+    }
+
+    .gradcam-carousel {
+      margin-top: 16px;
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px 18px 12px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .gradcam-track {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradcam-slide {
+      display: none;
+      text-align: center;
+    }
+
+    .gradcam-slide.active {
+      display: block;
+    }
+
+    .gradcam-slide img {
+      max-width: 100%;
+      max-height: 320px;      
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .gradcam-slide figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    /* Prev / next buttons */
+    .gradcam-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(22, 101, 52, 0.08);
+      color: #166534;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      padding: 0;
+    }
+
+    .gradcam-nav:hover {
+      background: rgba(22, 101, 52, 0.16);
+    }
+
+    .gradcam-nav.prev {
+      left: 8px;
+    }
+
+    .gradcam-nav.next {
+      right: 8px;
+    }
+
+    .gradcam-dots {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .gradcam-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #d1d5db;
+      cursor: pointer;
+    }
+
+    .gradcam-dot.active {
+      background: #15803d;
+    }
+
+     .conclusion-img-box {
+    width: 100%;
+    max-width: 420px;       
+    margin: 20px auto;
+    border: 2px solid var(--green-soft);
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .conclusion-img-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
 
 
   </style>
 </head>
+
+
 <body>
 
-  <!-- Fixed header -->
+ 
   <header>
     <div class="logo">♻️ EcoSort</div>
     <nav>
@@ -425,6 +529,9 @@
       <a href="#results">Results</a>
       <a href="#conclusion">Conclusion</a>
       <a href="#about">About</a>
+      <a href="https://github.com/moukthika-gunapaneedu/EcoSort" target="_blank" rel="noopener noreferrer">
+        GitHub Repo
+      </a>
     </nav>
   </header>
 
@@ -534,7 +641,7 @@
         </div>
       </div>
 
-      <!-- 5. How images connect to the topic (still non-technical) -->
+      <!-- 5. How images connect to the topic -->
       <div class="card intro-card">
         <div class="intro-text">
           <h3>Where do images fit into this story?</h3>
@@ -585,18 +692,24 @@
                 materials actually look at the moment someone decides where they belong.
               </p>
 
-              <div class="data-links">
+              <div class="data-links" style="margin-top: 14px;">
                 <a class="link-bubble"
                   href="https://github.com/garythung/trashnet"
-                  target="_blank" rel="noopener noreferrer">
+                  target="_blank" rel="noopener noreferrer"
+                  style="font-weight: 600; border-color: var(--green-soft);">
                   View original TrashNet dataset
                 </a>
-                <a class="link-bubble"
-                  href="https://www.kaggle.com/datasets/feyzazkefe/trashnet"
-                  target="_blank" rel="noopener noreferrer">
-                  Download resized TrashNet version (Kaggle)
-                </a>
               </div>
+
+            <div class="data-links" style="margin-top: 14px;">
+              <a class="link-bubble"
+                href="https://www.kaggle.com/datasets/feyzazkefe/trashnet"
+                target="_blank" rel="noopener noreferrer"
+                style="font-weight: 600; border-color: var(--green-soft);">
+                Download resized TrashNet version (Kaggle)
+              </a>
+            </div>
+
             </div>
 
             <div>
@@ -616,22 +729,30 @@
             </p>
 
             <ul style="margin-top: 14px; line-height: 1.6;">
-              <li><strong>Total images:</strong> ~2,527 files across all classes.</li>
+              <li><strong>Total images:</strong> 2,527 files across all classes.</li>
               <li><strong>Number of classes:</strong> 6 (cardboard, glass, metal, paper, plastic, trash).</li>
               <li><strong>Raw folder structure:</strong> one folder per class, each containing various lighting, shape, and condition variations.</li>
               <li><strong>Typical image resolution:</strong> varies widely (e.g., 384×512, 512×384, etc.) before resizing.</li>
               <li><strong>File formats:</strong> mix of JPG and PNG images.</li>
             </ul>
-              <div class="data-links" style="margin-top: 14px;">
+
+            <div class="data-links" style="margin-top: 14px;">
               <a class="link-bubble"
                 href="https://github.com/moukthika-gunapaneedu/EcoSort/tree/main/data/sample_raw"
-                target="_blank" rel="noopener noreferrer">
+                target="_blank" rel="noopener noreferrer"
+                style="font-weight: 600; border-color: var(--green-soft);">
                 View sample of the raw image folders (EcoSort)
               </a>
             </div>
+
+
+            <p style="margin-top: 10px; font-size: 13px; color: #6b7280;">
+              Note: The full raw TrashNet dataset used for training is stored locally and excluded from the repository
+              because of its size and Git ignore settings. The linked folder shows a small sample of the original
+              folder structure; all analysis in EcoSort was run on the complete dataset.
+            </p>
           </div>
 
-          <!-- 2. Class distribution bar chart (separate bubble just for image + text) -->
           <div class="card before-after-card">
           <h3>How are the classes distributed?</h3>
 
@@ -656,7 +777,7 @@
           </p>
         </div>
 
-        <!-- 3. Cleaning and standardizing -->
+      
         <div class="card" style="margin-top: 20px;">
             <div>
               <h3>How were the images cleaned and prepared?</h3>
@@ -674,17 +795,19 @@
                 </ul>
               </p>
 
-              <div class="data-links">
+              <div class="data-links" style="margin-top: 14px;">
                 <a class="link-bubble"
                   href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/data_prep.py"
-                  target="_blank" rel="noopener noreferrer">
-                  Click here for cleaning and preprocessing code
+                  target="_blank" rel="noopener noreferrer"
+                  style="font-weight: 600; border-color: var(--green-soft);">
+                  View the cleaning and preprocessing code
                 </a>
               </div>
+
             </div>
         </div>
 
-        <!-- 3b. Separate bubble for before/after examples -->
+        
         <div class="card before-after-card">
           <h3>Example: before and after cleaning</h3>
           <div class="before-after-grid">
@@ -699,13 +822,13 @@
           </div>
           <div class="image-info-row" style="display: flex; justify-content: space-between; margin-top: 12px;">
 
-          <!-- Left (Raw) -->
+          
           <div style="width: 48%; text-align: center;">
             <p style="margin: 0; font-weight: 600;">Original resolution</p>
             <p style="margin: 4px 0 0 0; color: #555;">512 × 384 pixels (varies by sample)</p>
           </div>
 
-          <!-- Right (Processed) -->
+          
           <div style="width: 48%; text-align: center;">
             <p style="margin: 0; font-weight: 600;">Processed resolution</p>
             <p style="margin: 4px 0 0 0; color: #555;">224 × 224 pixels (uniform)</p>
@@ -727,81 +850,116 @@
         </div>
 
         <div class="card" style="margin-top: 20px;">
-        <h3>How do the classes look after cleaning?</h3>
-        <p style="text-align: justify;">
-          After preparing the dataset, each category was rechecked for image quality, duplicates, and valid file types.
-          The cleaned dataset is slightly smaller than the raw version because blurred, unusable, or mislabeled images
-          were removed. The bar chart below shows the new distribution across all six categories.
-        </p>
+          <h3>How was the dataset organized for exploration?</h3>
 
-        <div class="chart-wrapper" style="margin-top: 20px;">
-          <img src="website/after_class_counts.png" alt="After-cleaning class distribution bar chart">
-        </div>
+          <p style="text-align: justify;">
+            After cleaning, the dataset is divided into three groups that each serve a specific purpose in the
+            exploration and evaluation process. This structure ensures that the model learns from one portion of
+            the data, is checked on another, and is finally measured on completely unseen examples.
+          </p>
 
-        <p style="margin-top: 14px; text-align: justify;">
-          While the overall structure of the dataset remains balanced, small variations appear because invalid files  
-          were filtered out. These quality checks help ensure cleaner training data and reduce noise during model learning.
-        </p>
+          <ul style="margin-top: 14px; line-height: 1.6;">
+            <li>
+              <strong>Training set (80%):</strong> the largest split, used to teach the model what typical examples of 
+              each category look like.
+            </li>
+            <li>
+              <strong>Validation set (10%):</strong> a checkpoint split that verifies whether the learned 
+              patterns still hold on new images the model did not train on.
+            </li>
+            <li>
+              <strong>Test set (10%):</strong> kept completely separate until final evaluation to measure true 
+              generalization on unseen samples.
+            </li>
+          </ul>
 
-        <div class="data-links" style="margin-top: 16px;">
-          <a class="link-bubble"
-            href="https://github.com/moukthika-gunapaneedu/EcoSort/tree/main/data/processed"
-            target="_blank" rel="noopener noreferrer">
-            View cleaned (processed) dataset folders
-          </a>
-        </div>
-      </div>
+          <p style="text-align: justify; margin-top: 10px;">
+            Splitting the data this way mirrors a natural learning process: study a subset, periodically check your
+            understanding, and then test that knowledge in a new setting. This approach reduces over-fitting, keeps 
+            the evaluation fair, and ensures the model is judged on its ability to generalize rather than memorize.
+          </p>
 
-
-        <!-- 4. Splitting the data -->
-        <div class="card" style="margin-top: 20px;">
-          <div class="two-column">
-            <div>
-              <h3>How was the dataset organized for exploration?</h3>
-              <p style="text-align: justify;">
-                After cleaning, the images are divided into three groups that support careful
-                evaluation. The first group is used to explore what typical examples of each
-                category look like. A second group acts as a checkpoint, helping confirm that
-                early impressions still hold up on new images. A third group is kept separate
-                until the very end, so that conclusions can be tested on images that have not
-                been seen before. This split mirrors a natural process: learn from a subset,
-                check your understanding, and then see how well it transfers to unfamiliar
-                cases. Organizing the dataset in this way keeps the exploration honest and
-                reduces the risk of over-fitting to a few memorable examples.
-              </p>
-            </div>
-            <div>
-              <div class="image-placeholder">
-                Suggested visual: simple diagram of the split, e.g.
-                70% training · 15% validation · 15% test, with all categories represented.
-              </div>
-            </div>
+          <div class="data-links" style="margin-top: 14px;">
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/split_dataset.py"
+              target="_blank" rel="noopener noreferrer"
+              style="font-weight: 600; border-color: var(--green-soft);">
+              View the dataset splitting code
+            </a>
           </div>
+
         </div>
 
-        <!-- 5. Links to data and cleaned versions -->
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>How does the data look after cleaning?</h3>
+
+          <p style="text-align: justify;">
+            After preparing the dataset, each category was rechecked for image quality, duplicates, and valid 
+            file types. The cleaned dataset is slightly smaller than the raw version because blurred, unusable, 
+            or mislabeled images were removed. The bar chart below shows the new distribution across all six categories.
+          </p>
+
+          <div class="chart-wrapper" style="margin-top: 20px;">
+            <img src="website/after_class_counts.png" alt="After-cleaning class distribution bar chart">
+          </div>
+
+          <p style="margin-top: 14px; text-align: justify;">
+            The processed dataset preserves the same six-category structure as the original, but all images are now 
+            standardized and cleaned. Each file has been resized, converted to RGB, checked for readability, and 
+            verified to ensure the main object is clearly visible. This results in a more uniform and reliable set of 
+            samples for model training.
+          </p>
+
+          <p style="text-align: justify;">
+            While the overall balance across categories remains similar, certain classes became slightly smaller after 
+            removing corrupted or low-quality files. These adjustments help reduce noise in the training data and 
+            improve the model’s ability to learn consistent visual patterns.
+          </p>
+
+          <!-- Processed dataset bullet list -->
+          <ul style="margin-top: 14px; line-height: 1.6;">
+            <li><strong>Total processed images:</strong> 2019 files after removing duplicates, corrupted files, and unusable samples.</li>
+            <li><strong>Number of classes:</strong> 6 (cardboard, glass, metal, paper, plastic, trash).</li>
+            <li><strong>Processed folder structure:</strong> organized into <strong>train</strong>, <strong>val</strong>, and <strong>test</strong> splits, each containing all six categories.</li>
+            <li><strong>Final image resolution:</strong> all images resized to a uniform <strong>224 × 224</strong> RGB format.</li>
+            <li><strong>File formats:</strong> cleaned and saved as consistent <strong>RGB JPG</strong> images.</li>
+          </ul>
+
+          <div class="data-links" style="margin-top: 14px;">
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/tree/main/data/sample_processed"
+              target="_blank" rel="noopener noreferrer"
+              style="font-weight: 600; border-color: var(--green-soft);">
+              View sample of the cleaned (processed) dataset folders
+            </a>
+          </div>
+
+
+          <p style="margin-top: 10px; font-size: 13px; color: #6b7280;">
+            Note: Only a small sample of the processed dataset is shown here.  
+            The full processed dataset used for training is stored locally and excluded from the repository 
+            due to its size and Git ignore settings.
+          </p>
+        </div>
+
         <div class="card" style="margin-top: 20px;">
           <h3>Data and code access</h3>
+
           <p style="text-align: justify;">
-            To keep EcoSort reproducible, all key resources are shared so that others can
-            repeat or extend the work. The original dataset, cleaned image folders, and
-            preparation scripts can be explored directly.
+            To keep EcoSort reproducible and transparent, the entire project (including the sample raw data,
+            sample processed data, preprocessing scripts, splitting code, training pipeline, and visualizations)
+            is available in the GitHub repository. Only small samples of the dataset are included in the repo.
+            The full raw and processed datasets used for training are stored locally due to their size and
+            Git ignore settings.
           </p>
-          <div class="data-links">
+
+          <div class="data-links" style="margin-top: 14px;">
             <a class="link-bubble"
-              href="https://github.com/garythung/trashnet"
-              target="_blank" rel="noopener noreferrer">
-              Original TrashNet dataset
-            </a>
-            <a class="link-bubble"
-              href="#"
-              target="_blank" rel="noopener noreferrer">
-              Cleaned EcoSort image folders (add link)
-            </a>
-            <a class="link-bubble"
-              href="#"
-              target="_blank" rel="noopener noreferrer">
-              EcoSort project repository and source code (add link)
+              href="https://github.com/moukthika-gunapaneedu/EcoSort"
+              target="_blank" rel="noopener noreferrer"
+              style="font-weight: 600; border-color: var(--green-soft);">
+              EcoSort GitHub Repository (project code & sample data)
             </a>
           </div>
         </div>
@@ -810,133 +968,982 @@
     </section>
 
 
-    <!-- Analysis -->
     <section id="analysis">
       <div class="section-inner">
         <div class="section-label">Section 3 · Analysis · Models &amp; Methods</div>
-        <div class="two-column">
-          <div>
-            <h2>Teaching a model to “see” materials</h2>
-            <div class="card">
-              <p>
-                At the heart of EcoSort is a type of model that is commonly used for images: a Convolutional
-                Neural Network (CNN). Rather than working with raw text or numbers alone, a CNN is designed
-                to look at pixel patterns and gradually build up an understanding of shapes, edges, and textures.
-                With enough examples, the model can begin to recognize that crumpled paper tends to look
-                different from transparent plastic, and that glass bottles reflect light in a distinctive way.
-              </p>
-              <p>
-                For this project, the CNN is trained to take a single waste image as input and assign it to
-                one of the six categories. The training process adjusts the internal parameters of the model
-                so that its predictions align more closely with the labeled examples over time. Alongside the
-                core model, additional tools such as Grad-CAM visualizations are used to highlight which parts
-                of the image the network is focusing on when it makes a decision. This helps connect the
-                technical behavior of the model back to something humans can interpret and reason about.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div class="image-placeholder">
-              Possible visual: a simplified block diagram of the CNN,
-              from input image → feature extraction → classification layer,
-              with arrows showing the flow.
-            </div>
+
+        <!-- 3.1 Why this type of model? -->
+         <h2>Teaching a model to “see” materials</h2>
+        <div class="card" style="margin-top: 20px;">
+
+          <p style="text-align: justify;">
+            EcoSort uses <strong>convolutional neural networks (CNNs)</strong> to recognize materials from
+            images. CNNs are a natural choice for this task because they are designed to look for local
+            patterns in pixels (edges, textures, and shapes) that are strong indicators of whether an object is
+            made of cardboard, glass, metal, paper, plastic, or mixed trash. Rather than manually designing
+            features, the network learns filters that highlight what matters most in each class.
+          </p>
+
+          <p style="text-align: justify;">
+            Two related architectures were explored. A <strong>custom EcoSortCNN</strong> was used as a
+            baseline, built from stacked convolution, batch normalization, and pooling layers followed by a
+            small fully connected classifier. The final model is a <strong>ResNet-18 based network</strong>,
+            which starts from a backbone pretrained on ImageNet and then fine-tunes it for EcoSort’s six
+            categories. Using a pretrained backbone allows the model to reuse rich, general visual features
+            (such as corners, textures, and object parts) and adapt them to the more specific task of
+            distinguishing common waste items.
+          </p>
+
+          <div class="data-links" style="margin-top: 14px;">
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/model.py"
+              target="_blank" rel="noopener noreferrer"
+              style="font-weight: 600; border-color: var(--green-soft);">
+              View model code (model.py)
+            </a>
           </div>
         </div>
-      </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>What is a Convolutional Neural Network (CNN)?</h3>
+
+          <p style="text-align: justify;">
+            A <strong>Convolutional Neural Network (CNN)</strong> is a type of deep learning model that is
+            especially good at understanding images. Instead of looking at the entire image at once,
+            a CNN scans it using small filters that move across pixels. These filters learn to detect
+            important visual patterns such as edges, corners, curves, and textures. As the image flows
+            through deeper layers, the model shifts from detecting simple shapes to recognizing
+            more complex structures like bottle rims, shiny reflections, cardboard surfaces, and so on.
+          </p>
+
+          <ul style="line-height: 1.6;">
+            <li><strong>Convolution layers:</strong> learn small patterns in small regions of the image.</li>
+            <li><strong>ReLU activation:</strong> keeps only the useful parts of the signal.</li>
+            <li><strong>Pooling layers:</strong> shrink the image while keeping the important regions.</li>
+            <li><strong>Fully connected layer:</strong> uses all extracted features to make a final prediction.</li>
+          </ul>
+
+          <div class="intro-image tight" style="margin-top: 14px;">
+            <!-- Replace with your own image -->
+            <img src="website/cnn.png"
+                alt="General CNN diagram showing convolution, activation, pooling, flattening, and fully-connected layers.">
+          </div>
+
+          <p style="margin-top: 6px; font-size: 13px; color: #6b7280;">
+            Illustration: A typical CNN pipeline for image classification.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>What is the Custom EcoSortCNN?</h3>
+
+          <p style="text-align: justify;">
+            The <strong>Custom EcoSortCNN</strong> is a lightweight convolutional neural network built
+            specifically for this project. It serves as a <strong>baseline model</strong>, showing how well
+            a straightforward CNN can perform before introducing more advanced techniques like transfer
+            learning. Its design follows the classic CNN structure: early layers extract patterns from the
+            image, and the final layers turn those patterns into a prediction for one of the six material
+            categories.
+          </p>
+
+          <!-- Text diagram of the architecture -->
+          <pre style="
+              margin-top: 14px;
+              padding: 14px 16px;
+              background: #ffffff;
+              border-radius: 10px;
+              border: 2px solid #15803d33;     /* subtle green (20% opacity) */
+              box-shadow: 0 0 3px rgba(21, 128, 61, 0.08); /* soft shadow */
+              font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+              font-size: 12.5px;
+              overflow-x: auto;
+              white-space: pre;
+              color: #374151;
+          ">
+        Input Image (224 × 224 × 3)
+                    ↓
+        ──────────────────────────────────────────────
+        Block 1:  Conv(32 filters, 3×3)
+                  BatchNorm
+                  ReLU
+                  MaxPool(2×2)
+                    ↓
+        Block 2:  Conv(64 filters, 3×3)
+                  BatchNorm
+                  ReLU
+                  MaxPool(2×2)
+                    ↓
+        Block 3:  Conv(128 filters, 3×3)
+                  BatchNorm
+                  ReLU
+                  MaxPool(2×2)
+                    ↓
+        Block 4:  Conv(256 filters, 3×3)
+                  BatchNorm
+                  ReLU
+                  MaxPool(2×2)
+                    ↓
+        ──────────────────────────────────────────────
+        Flatten
+                    ↓
+        Fully Connected Layer (512 units)
+                    ↓
+        Dropout (0.5)
+                    ↓
+        Output Layer (6 material classes)
+          </pre>
+
+          <ul style="margin-top: 14px; line-height: 1.6; color: #4b5563; font-size: 15px;">
+            <li><strong>4 convolution blocks:</strong> each block has Conv + BatchNorm + ReLU + MaxPool.</li>
+            <li><strong>Channels grow:</strong> 32 → 64 → 128 → 256, allowing the model to detect increasingly complex patterns.</li>
+            <li><strong>Dense classifier:</strong> flatten → 512-unit fully connected layer → dropout → 6-class output layer.</li>
+            <li><strong>Trained from scratch:</strong> all weights are learned only from EcoSort’s dataset.</li>
+            <li><strong>Role:</strong> provides a clean baseline to compare against more powerful models such as ResNet-18.</li>
+          </ul>
+
+          <h4 style="margin-top: 18px; font-size: 15px;">What do the building blocks mean?</h4>
+
+          <ul style="margin-top: 8px; line-height: 1.6; color: #4b5563; font-size: 15px;">
+            <li>
+              <strong>Convolution (Conv):</strong> slides small filters over the image to detect local
+              patterns such as edges, corners, and textures.
+            </li>
+            <li>
+              <strong>Batch Normalization (BatchNorm):</strong> keeps the activations in a stable range so
+              the network trains faster and is less likely to overfit.
+            </li>
+            <li>
+              <strong>ReLU activation:</strong> keeps only positive values and sets negative values to zero,
+              helping the model learn non-linear patterns.
+            </li>
+            <li>
+              <strong>Max Pooling (MaxPool):</strong> reduces the spatial size by keeping only the strongest
+              responses in each small region, which focuses the model on the most important visual cues.
+            </li>
+          </ul>
+
+          <p style="margin-top: 10px; text-align: justify; color: #4b5563; font-size: 15px;">
+            The Custom EcoSortCNN essentially starts by noticing basic shapes and textures in each
+            image and gradually builds up to more detailed features. The final layers combine these features
+            to decide whether the object looks most like cardboard, glass, metal, paper, plastic, or mixed
+            trash. This baseline model shows how far a standard CNN can go before adding more advanced
+            architectures like ResNet-18.
+          </p>
+        </div>
+
+
+
+        <div class="card" style="margin-top: 20px;">
+
+          <h3>What is ResNet-18?</h3>
+
+          <p style="text-align: justify;">
+            <strong>ResNet-18</strong> is a widely used deep convolutional neural network that introduced
+            the concept of <strong>residual connections</strong>. These skip-connections act like shortcut
+            paths, allowing information to flow forward without being lost. This makes the network much
+            easier to train, especially as it becomes deeper. ResNet-18 is powerful, stable, and still
+            lightweight enough for fast training and real-time applications.
+          </p>
+
+          <p style="text-align: justify;">
+            In EcoSort, ResNet-18 is used through <strong>transfer learning</strong>. The model starts with
+            weights pretrained on ImageNet, a huge dataset of everyday images. These pretrained weights
+            already understand edges, textures, shapes, and object structures. We replace the final layer so
+            the model predicts EcoSort’s six material categories, then fine-tune the entire network on the
+            cleaned dataset.
+          </p>
+
+         
+          <pre style="
+              margin-top: 14px;
+              padding: 14px 16px;
+              background: #ffffff;
+              border-radius: 10px;
+              border: 2px solid #15803d33;        /* subtle green outline */
+              box-shadow: 0 0 3px rgba(21, 128, 61, 0.08); /* soft green shadow */
+              font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+              font-size: 12.5px;
+              overflow-x: auto;
+              white-space: pre;
+              color: #374151;
+          ">
+        Input Image (224 × 224 × 3)
+                        ↓
+        Conv Layer + BatchNorm + ReLU
+                        ↓
+        ──────────── Residual Block (x2) ────────────
+            Conv → BN → ReLU → Conv → BN
+            + skip connection (input added back)
+                        ↓
+        ──────────── Residual Block (x2) ────────────
+            Conv → BN → ReLU → Conv → BN
+            + skip connection
+                        ↓
+        ──────────── Residual Block (x2) ────────────
+                        ↓
+        ──────────── Residual Block (x2) ────────────
+                        ↓
+        Global Average Pooling
+                        ↓
+        Fully Connected Layer (6 classes)
+          </pre>
+
+          <ul style="margin-top: 14px; line-height: 1.6; color: #4b5563; font-size: 15px;">
+            <li><strong>Residual blocks:</strong> solve training problems in deep networks by using skip connections.</li>
+            <li><strong>Pretrained backbone:</strong> begins with ImageNet features learned from millions of images.</li>
+            <li><strong>EcoSort fine-tuning:</strong> replaces the final classification layer with a 6-class head.</li>
+            <li><strong>Advantages:</strong> faster training, higher accuracy, better generalization, more stable gradients.</li>
+          </ul>
+
+          <h4 style="margin-top: 18px; font-size: 15px;">What is a residual connection?</h4>
+
+          <p style="text-align: justify; color: #4b5563; font-size: 15px;">
+            A residual connection allows a block to output:
+            <strong>BlockOutput = F(input) + input</strong>.
+            This simple addition prevents the network from “forgetting” information and makes deep networks
+            learn far more effectively. Instead of struggling to learn everything from scratch, the block
+            only learns the “difference” from the input.
+          </p>
+
+          <p style="margin-top: 10px; text-align: justify; color: #4b5563; font-size: 15px;">
+            ResNet-18 is like giving the model a shortcut so it can keep what it already
+            knows while learning new details. This makes it extremely reliable for EcoSort, where the model
+            must distinguish fine textures such as plastic gloss, metal shine, paper fibers, and cardboard
+            grain.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top: 24px; padding: 28px 32px;">
+          <h3 style="margin-bottom: 16px;">Why were these models used?</h3>
+
+          <p style="text-align: justify; line-height: 1.65; margin-bottom: 18px;">
+            EcoSort uses two complementary models - a custom CNN and a ResNet-18 backbone because each contributes
+            something different to the overall system. Together, they allow the project to compare a simple,
+            from-scratch architecture with a stronger transfer-learning model that is better suited for
+            real-world accuracy.
+          </p>
+
+          <ul style="line-height: 1.7; font-size: 15px; color: #4b5563; padding-left: 20px; text-align: justify;">
+            <li style="margin-bottom: 14px;">
+              <strong>Custom EcoSortCNN (baseline model):</strong>
+              A lightweight, easy-to-train network designed specifically for the EcoSort dataset.
+              It serves as a controlled reference point that shows how well a standard CNN performs without
+              external knowledge from large datasets. This makes it ideal for understanding the dataset’s
+              difficulty before introducing more advanced techniques.
+            </li>
+
+            <li style="margin-bottom: 14px;">
+              <strong>ResNet-18 (transfer-learning model):</strong>
+              A proven architecture pretrained on ImageNet, which already captures patterns such as edges,
+              shapes, textures, and object structures. Fine-tuning this model allows EcoSort to benefit from
+              strong visual features learned from millions of images, resulting in faster convergence and
+              higher accuracy on small or class-imbalanced datasets.
+            </li>
+
+            <li style="margin-bottom: 14px;">
+              <strong>Balanced comparison:</strong>
+              Using both models allows EcoSort to measure the impact of transfer learning,
+              identify when a simple CNN struggles, and see how much performance gain comes from deeper
+              architectures with residual connections.
+            </li>
+
+            <li style="margin-bottom: 4px;">
+              <strong>Practical considerations:</strong>
+              ResNet-18 offers an excellent trade-off between speed and accuracy, making it suitable for a
+              student project environment while still achieving production-quality insights. The custom CNN
+              remains useful for experimentation, debugging, and lightweight deployments.
+            </li>
+          </ul>
+
+          <p style="text-align: justify; line-height: 1.65; margin-top: 18px; color: #4b5563;">
+            The custom CNN provides a clean, interpretable baseline, while ResNet-18 delivers the
+            accuracy and generalization needed for reliable real-world waste classification. Comparing the two
+            helps highlight the strengths and limitations of each approach.
+          </p>
+        </div>
+
+
+
+
+
+        <!-- 3.2 Model architectures -->
+        <div class="card" style="margin-top: 24px;">
+          <h3>What do the EcoSort models look like structurally?</h3>
+
+          <p style="text-align: justify;">
+            The <strong>EcoSortCNN baseline</strong> processes each 224 × 224 RGB image through a sequence of
+            four convolutional blocks. Each block applies 3×3 filters, batch normalization, a ReLU activation,
+            and a 2×2 max-pooling layer, gradually increasing the number of channels
+            (32 → 64 → 128 → 256) while reducing the spatial resolution. The resulting feature maps are then
+            flattened and passed through a 512-unit dense layer with dropout before the final six-class output
+            layer. This model is deliberately compact: it is easy to train from scratch and provides a clear
+            reference point for how much value transfer learning adds.
+          </p>
+
+          <p style="text-align: justify;">
+            The <strong>EcoSortResNet18 model</strong> replaces the hand-built feature extractor with a
+            <em>ResNet-18</em> backbone that has already been trained on ImageNet. The original final layer is
+            removed and replaced with a new fully connected head that outputs six logits, one for each
+            EcoSort category. In this project, the backbone is <strong>fine-tuned end-to-end</strong> rather than
+            frozen, allowing the earlier layers to adjust slightly to the specific textures and shapes present
+            in waste images while still benefiting from the strong initialization provided by pretraining.
+          </p>
+
+          <ul style="margin-top: 10px; line-height: 1.6;">
+            <li><strong>Input:</strong> 224 × 224 RGB images, normalized with ImageNet mean and standard deviation.</li>
+            <li><strong>Backbone:</strong> ResNet-18 with residual blocks that help train deeper networks reliably.</li>
+            <li><strong>Output head:</strong> final fully connected layer mapping to six material classes.</li>
+            <li><strong>Choice of model:</strong> ResNet-18 offers a good balance of accuracy and computational
+                cost for a project-scale dataset like TrashNet.</li>
+          </ul>
+        </div>
+
+        
+
+        <!-- 3.3 Training setup and optimization -->
+        <div class="card" style="margin-top: 24px;">
+          <h3>How is the model trained?</h3>
+
+          <p style="text-align: justify;">
+            EcoSort is trained on the cleaned and split dataset using the same train/validation/test structure
+            described earlier. Batches of images and labels are loaded from disk, moved to the GPU when
+            available, and passed through the network to produce class scores. The training loop then measures
+            how far the predictions are from the true labels and uses this feedback to update the model.
+          </p>
+
+          <ul style="margin-top: 10px; line-height: 1.6;">
+            <li>
+              <strong>Loss function:</strong> cross-entropy with a small amount of label smoothing
+              (<code>0.05</code>), which slightly softens the target distribution. This helps prevent the model
+              from becoming overly confident and improves generalization on the smaller “trash” class.
+            </li>
+            <li>
+              <strong>Optimizer:</strong> AdamW with a learning rate of <code>3 × 10⁻⁴</code> and weight decay
+              <code>1 × 10⁻⁴</code>, applied only to parameters that are marked as trainable. Weight decay acts as
+              a gentle regularizer to discourage overly large weights.
+            </li>
+            <li>
+              <strong>Learning-rate scheduler:</strong> a ReduceLROnPlateau scheduler monitors validation
+              accuracy and reduces the learning rate when progress stalls, allowing larger, exploratory steps
+              early in training and finer adjustments later on.
+            </li>
+            <li>
+              <strong>Training length:</strong> up to 20 epochs, with the best model snapshot saved whenever the
+              validation accuracy improves. This ensures that later evaluations always use the strongest version
+              of the network rather than just the last epoch.
+            </li>
+          </ul>
+
+          <p style="text-align: justify; margin-top: 10px;">
+            During both training and validation, EcoSort tracks average loss and accuracy across each epoch.
+            These metrics are used to compare architectures, tune hyperparameters, and check for signs of
+            over-fitting, such as validation accuracy plateauing while training accuracy continues to rise.
+          </p>
+
+          <div class="data-links" style="margin-top: 14px;">
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/train.py"
+              target="_blank" rel="noopener noreferrer"
+              style="font-weight: 600; border-color: var(--green-soft);">
+              View the training loop (train.py)
+            </a>
+          </div>
+        </div>
+
+
+        <div class="card" style="margin-top: 22px;">
+          <h3 style="margin-bottom: 12px;">How is the trained model used?</h3>
+
+          <p style="text-align: justify;">
+            After training, EcoSort loads the best saved model checkpoint and uses it to classify 
+            <strong>any new waste image</strong>. This stage is called inference. The goal is simple:
+            take one image, process it, and return the most likely material class.
+          </p>
+
+          <ol style="margin-top: 12px; padding-left: 22px; text-align: justify;">
+            <li><strong>Load the model checkpoint:</strong> EcoSort restores the trained weights so the 
+                model behaves exactly as it did after training.</li>
+
+            <li><strong>Preprocess the image:</strong> Resize to 224×224, convert to RGB, normalize with 
+                ImageNet statistics, and transform into a tensor.</li>
+
+            <li><strong>Switch to inference mode:</strong> The model is set to 
+                <code>eval()</code> so BatchNorm and Dropout behave deterministically.</li>
+
+            <li><strong>Run a forward pass:</strong> The image tensor is passed through the network to 
+                produce six logits - one for each EcoSort category.</li>
+
+            <li><strong>Convert logits to probabilities:</strong> A softmax layer transforms these scores 
+                into probabilities that sum to 1.</li>
+
+            <li><strong>Select the highest probability:</strong> The class with the largest probability 
+                becomes the final predicted label (e.g., “paper,” “plastic").</li>
+          </ol>
+
+          <p style="text-align: justify; margin-top: 12px;">
+            This inference pipeline is how EcoSort would operate in real-world applications - classifying 
+            images one at a time in recycling systems, sustainability apps, or automated waste-sorting tools.
+          </p>
+
+          <!-- Diagram block -->
+          <div style="
+              margin-top: 20px;
+              padding: 14px 16px;
+              border: 1.5px solid var(--green-soft);
+              border-radius: 10px;
+              font-family: monospace;
+              background: #ffffff;">
+        <pre style="margin: 0; white-space: pre-wrap; font-size: 14px;">
+        Image 
+          → Preprocessing (resize, RGB, normalize)
+            → Model Forward Pass
+              → Softmax Probabilities
+                → Predicted Material Label
+        </pre>
+          </div>
+
+        </div>
     </section>
 
-    <!-- Results -->
     <section id="results">
       <div class="section-inner">
         <div class="section-label">Section 4 · Results</div>
-        <div class="two-column">
-          <div>
-            <h2>How well does EcoSort perform?</h2>
-            <div class="card">
-              <p>
-                After training, EcoSort is evaluated on a set of images it has never seen before. For each
-                photograph, the model is asked to predict the correct category, and its answers are compared
-                against the true labels. The overall accuracy gives a single summary of how often EcoSort is
-                correct, but a more detailed view comes from a confusion matrix, which shows which categories
-                are most frequently mistaken for one another.
-              </p>
-              <p>
-                In practice, the model performs strongly on clearly separated materials such as glass and
-                cardboard, while showing more uncertainty when items are partially damaged, crumpled, or
-                visually similar across categories. These patterns mirror the real-world challenges of
-                recycling, where a slightly contaminated item can easily be misidentified. Example predictions
-                and heatmaps from Grad-CAM provide concrete illustrations of when EcoSort is confident, when
-                it hesitates, and where it directs its attention within each image.
-              </p>
+        <h2>How well does EcoSort perform?</h2>
+
+        <div class="card">
+          <h3>Performance on the held-out test set</h3>
+
+          <p style="text-align: justify;">
+            After training, EcoSort is evaluated on a <strong>held-out test split</strong> that the model never sees during
+            training or validation. The best checkpoint from the training loop is reloaded, and the model is run once over
+            all test images to obtain final predictions. For each image, EcoSort compares the predicted material label with
+            the true label, building up a complete picture of how often the model is correct and where mistakes occur.
+          </p>
+
+          <p style="text-align: justify;">
+            The figure below shows the resulting <strong>confusion matrix</strong>, which counts how many times each true
+            class (rows) is predicted as each possible class (columns). Darker green squares along the diagonal indicate
+            correct predictions, while off-diagonal cells show misclassifications. This view complements overall accuracy
+            by revealing which materials are consistently recognized and which tend to be confused with others.
+          </p>
+
+          <!-- Confusion matrix image -->
+           <div style="width: 70%; margin: 20px auto; border: 1px solid var(--green-soft); border-radius: 12px; overflow: hidden;">
+              <img src="results/confusion_matrix/confusion_matrix.png"
+                  alt="EcoSort confusion matrix showing true vs predicted labels"
+                  style="width: 100%; display: block;">
             </div>
+
+          <p style="margin-top: 14px; text-align: justify; color: #4b5563; font-size: 15px;">
+            In EcoSort’s confusion matrix, most of the mass lies on the diagonal, indicating that the model correctly
+            distinguishes the six material types in the majority of test cases. Classes such as <strong>paper</strong>,
+            <strong>cardboard</strong>, and <strong>plastic</strong> show very strong diagonals with almost no confusion.
+            The few off-diagonal entries mainly occur between visually similar categories. For example,
+            <strong>glass</strong> and <strong>metal</strong>, or occasional confusion between <strong>plastic</strong>
+            and <strong>trash</strong>, where shape and surface cues can overlap. These patterns mirror real-world sorting
+            challenges, where shiny or crumpled items are more easily misinterpreted.
+          </p>
+
+          <p style="margin-top: 16px; text-align: justify;">
+            Alongside the confusion matrix, a <strong>classification report</strong> summarizes precision, recall, and
+            F1-score for each class. These metrics show how the model performs on both common categories and smaller,
+            more challenging ones such as “trash,” where data is more limited and visual appearance is more varied.
+          </p>
+
+          
+          <pre style="
+              margin-top: 14px;
+              padding: 14px 16px;
+              background: #ffffff;
+              border-radius: 10px;
+              border: 2px solid #15803d33;
+              box-shadow: 0 0 3px rgba(21, 128, 61, 0.08);
+              font-family: 'JetBrains Mono','SFMono-Regular',Menlo,Monaco,Consolas,monospace;
+              font-size: 12.5px;
+              overflow-x: auto;
+              white-space: pre;
+              color: #374151;
+          ">
+        precision    recall  f1-score   support
+
+        cardboard     0.9756    0.9756    0.9756        41
+        glass         0.9423    0.9608    0.9515        51
+        metal         0.9286    0.9512    0.9398        41
+        paper         0.9833    0.9833    0.9833        60
+        plastic       0.9787    0.9388    0.9583        49
+        trash         0.9333    0.9333    0.9333        15
+
+        accuracy                          0.9611       257
+        macro avg     0.9570    0.9572    0.9570       257
+        weighted avg  0.9614    0.9611    0.9611       257
+          </pre>
+
+          <p style="margin-top: 10px; text-align: justify; color: #4b5563; font-size: 15px;">
+            The report confirms that EcoSort achieves <strong>around 96% overall accuracy</strong>, with high precision and
+            recall across all six materials. Even the smallest class, <strong>trash</strong>, maintains strong scores, which
+            suggests that the model is not simply favoring the more common categories. The close agreement between precision,
+            recall, and F1 across classes indicates balanced behavior: EcoSort rarely over-predicts a class and is similarly
+            unlikely to miss it when it appears.
+          </p>
+
+          <!-- Link bubbles -->
+
+          <div class="data-links" style="margin-top: 14px;">
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/evaluate.py"
+              target="_blank" rel="noopener noreferrer",
+              style="font-weight: 600; border-color: var(--green-soft);">
+              View evaluation script (evaluate.py)
+            </a> <br>
+
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/results/classification_report.txt"
+              target="_blank" rel="noopener noreferrer",
+              style="font-weight: 600; border-color: var(--green-soft);">
+              View full classification report (precision · recall · F1)
+            </a>
           </div>
-          <div>
-            <div class="image-placeholder">
-              Insert here: test-set confusion matrix image and a few
-              side-by-side panels of input image, predicted label,
-              and Grad-CAM heatmap.
+        </div>
+
+
+        <!-- 4.2 Class-wise behaviour -->
+        <div class="card" style="margin-top: 24px;">
+          <h3>Which materials are easiest and hardest?</h3>
+
+          <p style="text-align: justify;">
+            The confusion matrix and classification report together show that EcoSort performs
+            strongest on materials with <strong>distinctive visual signatures</strong>. For example,
+            clear glass containers or rigid cardboard pieces with visible corrugation. These items
+            tend to produce confident predictions and high per-class precision and recall.
+          </p>
+
+          <p style="text-align: justify;">
+            Most errors appear between <strong>visually similar categories</strong>. Thin pieces of
+            cardboard may resemble paper, especially when folded or torn, while glossy plastic
+            packaging can look similar to metal under strong reflections. The “trash” category is
+            naturally diverse and absorbs many ambiguous cases, which lowers its scores relative to
+            more uniform classes. These patterns mirror real-world sorting challenges, where even
+            people hesitate or disagree on borderline items.
+          </p>
+
+          <ul style="margin-top: 10px; line-height: 1.6;">
+            <li>
+              <strong>Clearly separated classes:</strong> items with unique textures or shapes
+              (for example, glass bottles) are recognized most reliably.
+            </li>
+            <li>
+              <strong>Borderline pairs:</strong> confusion is most common between categories that
+              share color, thickness, or surface finish (paper vs. cardboard).
+            </li>
+            <li>
+              <strong>Diverse “trash” class:</strong> collects many edge cases and mixed materials,
+              which naturally lowers its precision and recall.
+            </li>
+          </ul>
+
+          <p style="margin-top: 10px; text-align: justify;">
+            These class-wise patterns are important because they point to concrete opportunities for
+            improvement; such as collecting more examples of borderline items, re-labeling confusing
+            samples, or designing clearer signage for categories that people and models both find
+            ambiguous.
+          </p>
+        </div>
+
+
+                <!-- 4.3 Grad-CAM heatmaps -->
+        <div class="card gradcam-card" style="margin-top: 24px;">
+          <h3>How EcoSort interprets images (Grad-CAM heatmaps)</h3>
+
+          <p style="text-align: justify;">
+            To move beyond raw numbers, EcoSort uses <strong>Grad-CAM</strong> visualizations to see where the
+            fine-tuned ResNet-18 model is “looking” when it predicts each class. For a given test image, Grad-CAM
+            produces a heatmap that highlights the regions most responsible for the chosen label. Warmer colors indicate
+            areas that contributed strongly to the decision.
+          </p>
+
+          <p style="text-align: justify;">
+            In many correctly classified examples, the heatmaps concentrate on the main object – the body of a bottle,
+            the surface of a can, or the texture of a cardboard flap – and largely ignore the background. In harder
+            cases, the attention sometimes spreads to shadows or clutter near the object, which helps explain why certain
+            items are mis-sorted. These visual checks provide an additional layer of trust: they show that EcoSort’s
+            predictions are usually driven by sensible visual cues rather than random noise.
+          </p>
+
+          <div class="data-links" style="margin-top: 14px;">
+            <a class="link-bubble"
+              href="https://github.com/moukthika-gunapaneedu/EcoSort/blob/main/src/gradcam.py"
+              target="_blank" rel="noopener noreferrer",
+              style="font-weight: 600; border-color: var(--green-soft);">
+               View Grad-CAM generation code (gradcam.py)
+            </a>
+        </div>
+
+          <div class="gradcam-carousel" id="gradcam-carousel">
+            <button class="gradcam-nav prev" type="button" aria-label="Previous example">‹</button>
+            <button class="gradcam-nav next" type="button" aria-label="Next example">›</button>
+
+            <div class="gradcam-track">
+              <!-- Slide 1 -->
+              <figure class="gradcam-slide active">
+                <img src="results/gradcam/example_0_true-cardboard_pred-cardboard.png"
+                    alt="Grad-CAM example 1: true cardboard, predicted cardboard">
+                <figcaption>
+                 Example 1 – True: <strong>cardboard</strong>, Predicted: <strong>cardboard</strong>.<br>
+                  The Grad-CAM shows strong attention along the vertical corner seam and the lower fold of the box.  
+                  These regions contain the clearest cardboard texture and depth cues, which the model relies on for its prediction.
+                </figcaption>
+              </figure>
+
+              <!-- Slide 2 -->
+              <figure class="gradcam-slide">
+                <img src="results/gradcam/example_1_true-cardboard_pred-cardboard.png"
+                    alt="Grad-CAM example 2: true cardboard, predicted cardboard">
+                <figcaption>
+                  Example 2 – True: <strong>cardboard</strong>, Predicted: <strong>cardboard</strong>.<br>
+                  The Grad-CAM highlights the printed barcode area, taped seams, and upper panel of the box. 
+                  These regions contain sharp edges, labels, and reflective tape that help the model distinguish 
+                  cardboard from smoother materials.
+                </figcaption>
+              </figure>
+
+              <!-- Slide 3 -->
+              <figure class="gradcam-slide">
+                <img src="results/gradcam/example_2_true-cardboard_pred-cardboard.png"
+                    alt="Grad-CAM example 3: true cardboard, predicted cardboard">
+                <figcaption>
+                   Example 3 – True: <strong>cardboard</strong>, Predicted: <strong>cardboard</strong>.<br>
+                    The Grad-CAM focuses on the horizontal flap cutout and the lower corrugated region of the box. 
+                    These areas contain sharp edges, shadows, and consistent cardboard texture, which the model uses 
+                    to confirm the material.
+                </figcaption>
+              </figure>
+
+              <!-- Slide 4 -->
+              <figure class="gradcam-slide">
+                <img src="results/gradcam/example_3_true-cardboard_pred-cardboard.png"
+                    alt="Grad-CAM example 4: true cardboard, predicted cardboard">
+                <figcaption>
+                  Example 4 – True: <strong>cardboard</strong>, Predicted: <strong>cardboard</strong>.<br>
+                  The Grad-CAM concentrates on the center of the torn cardboard piece, including the printed label 
+                  and surrounding corrugated texture. These regions provide strong material cues that help the model 
+                  distinguish cardboard from the plain background.
+                </figcaption>
+              </figure>
+
+              <!-- Slide 5 -->
+              <figure class="gradcam-slide">
+                <img src="results/gradcam/example_4_true-cardboard_pred-cardboard.png"
+                    alt="Grad-CAM example 5: true cardboard, predicted cardboard">
+                <figcaption>
+                  Example 5 – True: <strong>cardboard</strong>, Predicted: <strong>cardboard</strong>.<br>
+                  The Grad-CAM focuses on the center of the stacked cardboard piece, especially the exposed corrugated 
+                  edges and layered structure. These features provide clear material cues that help the model confirm 
+                  the object as cardboard.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="gradcam-dots">
+              <div class="gradcam-dot active" data-index="0"></div>
+              <div class="gradcam-dot" data-index="1"></div>
+              <div class="gradcam-dot" data-index="2"></div>
+              <div class="gradcam-dot" data-index="3"></div>
+              <div class="gradcam-dot" data-index="4"></div>
             </div>
           </div>
         </div>
+
+        <div class="card" style="margin-top: 24px;">
+  <h3>What do these results mean?</h3>
+
+  <p style="text-align: justify;">
+    Together, these performance metrics and visual explanations show that EcoSort is not only accurate but also
+    <strong>behaves in a sensible, interpretable way</strong>. The model reliably identifies materials with distinct
+    surface patterns such as cardboard, paper, and glass, while occasional errors arise in categories that overlap
+    visually. The Grad-CAM heatmaps confirm that predictions are driven by meaningful regionslike texture, edges, folds,
+    and printed labels rather than random background pixels.
+  </p>
+
+  <p style="text-align: justify;">
+    These outcomes suggest that EcoSort is well-suited for real-world environments where items appear in varied
+    orientations, lighting, or levels of wear. A model that consistently attends to the correct object and ignores
+    background noise is far more dependable for downstream applications such as smart bins, educational tools,
+    or semi-automated sorting workflows.
+  </p>
+
+  <p style="text-align: justify; margin-bottom: 0;">
+    In short, the results demonstrate that EcoSort is both <strong>high-performing</strong> and 
+    <strong>interpretable</strong>. These are the two qualities that make it a strong foundation for expanding to additional 
+    materials or more complex real-world scenes.
+  </p>
+</div>
+
+
+
       </div>
     </section>
 
-    <!-- Conclusion -->
-    <section id="conclusion">
-      <div class="section-inner">
-        <div class="section-label">Section 5 · Conclusion</div>
-        <div class="card">
-          <h2>From images to more mindful waste systems</h2>
-          <p>
-            EcoSort does not claim to solve recycling, but it shows that even a relatively simple image-based
-            model can reliably recognize common materials and highlight where confusion tends to arise. The
-            project suggests that automated classification could act as a quiet assistant in the background:
-            guiding smart bins, supporting staff at sorting facilities, or providing feedback in educational
-            settings where people are still learning what goes where. By surfacing which items are consistently
-            mis-sorted, such systems can also inform better signage, clearer instructions, and more thoughtful
-            design of collection points.
-          </p>
-          <p>
-            More broadly, this work is an example of how neural networks can be pointed at everyday sustainability
-            problems rather than only abstract benchmarks. Turning a single photo into a category label is a small
-            step, but it opens a path toward waste streams that are cleaner, less contaminated, and easier to
-            process. EcoSort invites future extensions: adding compostable materials, handling mixed scenes with
-            multiple items, or moving from controlled backgrounds to real-world environments like campuses,
-            offices, and city streets. Each of these steps could make automated support for sorting feel less like
-            a futuristic idea and more like a practical tool for reducing waste.
-          </p>
-        </div>
-      </div>
-    </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="section-inner">
-        <div class="section-label">Section 6 · About</div>
-        <div class="card">
-          <h2>About the project</h2>
-          <p>
-            EcoSort was developed as a neural networks course project exploring how computer vision can support
-            sustainability-focused applications. The work combines publicly available data, reproducible code,
-            and transparent evaluation so that others can build on the ideas, question the limitations, and
-            imagine new ways to connect machine learning with everyday environmental decisions.
-          </p>
-          <p>
-            All datasets, code, and trained models used in this project are linked through the accompanying
-            GitHub repository. The intention is that any interested student, practitioner, or educator can
-            re-run the experiments, adapt the model to new settings, or use the visuals as part of broader
-            conversations about waste, recycling, and responsible technology.
-          </p>
-        </div>
+<!-- Conclusion -->
+<section id="conclusion">
+  <div class="section-inner">
+    <div class="section-label">Section 5 · Conclusion</div>
+
+    <!-- Shared Image Style -->
+    <style>
+      .conclusion-img-box {
+        width: 100%;
+        max-width: 420px;      /* Medium size */
+        margin: 20px auto;
+        border: 2px solid var(--green-soft);
+        border-radius: 14px;
+        overflow: hidden;
+        padding: 0;
+      }
+      .conclusion-img-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    </style>
+
+
+    <!-- CARD 1 -->
+    <div class="card" style="margin-bottom: 28px;">
+      <h3>What the Results Actually Reveal</h3>
+
+      <div class="conclusion-img-box">
+        <img src="website/recycling_factory.png" alt="recycling facility">
       </div>
-    </section>
+
+      <p style="text-align: justify;">
+        The observations gathered throughout this project reveal something deeper than whether an item is sorted
+        correctly or not. They highlight how many subtle visual cues exist in everyday objects that we rarely pay
+        attention to until we stop and truly look. Over time, certain patterns begin to feel intuitive. Some materials
+        naturally stand out, while others blend together more than expected. This process shows how much of our waste
+        behavior is shaped by quick judgments made without much thought. It also reveals the quiet influence of habit:
+        people often rely on familiarity rather than careful decision-making when they toss something away. These
+        patterns make the outcomes feel less like isolated results and more like a window into how we interact with
+        ordinary objects. In that sense, the project ends up reflecting just as much about us as it does about the
+        materials themselves.
+      </p>
+    </div>
+
+
+    <!-- CARD 2 -->
+    <div class="card" style="margin-bottom: 28px;">
+      <h3>Understanding Why Things Get Mixed Up</h3>
+
+      <div class="conclusion-img-box">
+        <img src="website/confusion.png" alt="">
+      </div>
+
+      <p style="text-align: justify;">
+        Sorting through many examples makes it easy to understand why everyday recycling mistakes are so common.
+        Lighting, angles, and small distortions can make one object appear surprisingly similar to another. Even a
+        simple change in texture or shine can shift how an item is perceived, blurring the boundaries between different
+        categories. This experience shows that misplacement is not a sign of carelessness but a natural part of how
+        people interpret what they see. It highlights how complicated everyday sorting can feel, especially when items
+        are designed in ways that do not clearly communicate what they are made of. Instead of blaming individuals for
+        errors, this perspective fosters empathy and understanding for the challenges people face when trying to make
+        better environmental choices. It also encourages us to rethink how products are designed and presented.
+      </p>
+    </div>
+
+
+    <!-- CARD 3 -->
+    <div class="card" style="margin-bottom: 28px;">
+      <h3>What Paying Attention Teaches Us</h3>
+
+      <div class="conclusion-img-box">
+        <img src="website/similar.png" alt="">
+      </div>
+
+      <p style="text-align: justify;">
+        Examining everyday items closely creates a level of awareness that most of us rarely practice.
+        Textures, folds, patterns, and shadows become more visible, revealing details that normally go unnoticed.
+        This kind of focused attention changes the way we see even the simplest objects that would usually go straight
+        into a bin. It becomes clear how much automatic behavior shapes our daily decisions, including how we handle
+        waste. This process introduces a form of mindfulness, reminding us that small choices can become more thoughtful
+        simply by slowing down. There is a quiet beauty in recognizing the individuality of materials we often dismiss.
+        Ultimately, this attention transforms routine actions into intentional ones, offering a deeper appreciation for
+        the objects around us.
+      </p>
+    </div>
+
+
+    <!-- CARD 4 -->
+    <div class="card" style="margin-bottom: 28px;">
+      <h3>Why Small Systems Still Matter</h3>
+
+       <div class="conclusion-img-box">
+        <img src="website/collection.png" alt="">
+      </div>
+
+      <p style="text-align: justify;">
+        One of the most meaningful lessons from this project is that impactful change does not always require massive
+        tools or complicated systems. Sometimes, simple and quiet solutions can encourage better habits in ways that
+        feel natural rather than overwhelming. Small systems often create the most lasting influence because they blend
+        into everyday life without demanding major adjustments. They offer gentle reminders, subtle nudges, and new ways
+        of noticing things that people might otherwise ignore. In environmental spaces where challenges often feel huge,
+        it is encouraging to see that helpful improvements can begin with something much smaller. These kinds of tools
+        empower individuals by supporting better choices without adding pressure or guilt. They show that sustainability
+        can grow from gradual shifts rather than abrupt changes.
+      </p>
+    </div>
+
+
+    <!-- CARD 5 -->
+    <div class="card" style="margin-bottom: 28px;">
+      <h3>Where This Work Could Go Next</h3>
+
+      <div class="conclusion-img-box">
+        <img src="website/future.png" alt="">
+      </div>
+
+      <p style="text-align: justify; margin-bottom: 0;">
+        The journey taken through this project opens the door to a variety of meaningful next steps. As people become
+        more aware of the items they discard, they naturally begin to question the systems around them. This creates
+        opportunities for clearer guidance, better communication, and more thoughtful design in everyday spaces. There
+        is room to explore how communities respond to different types of sorting help, or how public spaces can better
+        support mindful disposal habits. These directions prioritize real human behavior rather than idealized systems,
+        allowing future work to be grounded in lived experience. The future of this project is not defined by technical
+        upgrades but by deeper engagement with the environments where sorting actually happens. Its next chapter lies in
+        understanding people, habits, and the small actions that collectively make a difference. 
+
+        EcoSort is one small step toward that direction, offering a reminder that awareness, clarity, 
+        and thoughtful design can reshape how we care for the materials around us.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section 6 · About -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Section 6 · About</div>
+
+    <div class="card" style="padding: 32px; position: relative;">
+
+      <!-- NAME + TITLE -->
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">
+        <strong>Moukthika Gunapaneedu</strong>
+      </h3>
+
+      <p style="margin: 0 0 16px 0; font-size: 16px; color: #4b5563;">
+        Data Scientist
+      </p>
+
+      <div style="
+        display: flex;
+        gap: 22px;
+        margin-bottom: 32px;
+      ">
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/moukthika-gunapaneedu" target="_blank">
+          <svg height="24" width="24" fill="#15803d" viewBox="0 0 24 24">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4zM8.5 8h3.8v2.16h.05c.53-.97 1.83-2.16 3.77-2.16 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.16V24h-4V8z"/>
+          </svg>
+        </a>
+
+        <!-- Blogger -->
+        <a href="https://mouk-momentum.blogspot.com/" target="_blank">
+          <svg width="24" height="24" fill="#15803d" viewBox="0 0 24 24">
+            <path d="M14.5 2h-5A7.5 7.5 0 002 9.5v5A7.5 7.5 0 009.5 22h5a7.5 7.5 0 007.5-7.5v-5A7.5 7.5 0 0014.5 2zm-4 5h3a1 1 0 010 2h-3a1 1 0 010-2zm5 10h-5a1 1 0 010-2h5a1 1 0 010 2z"/>
+          </svg>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/moukthika-gunapaneedu" target="_blank">
+          <svg height="24" width="24" fill="#15803d" viewBox="0 0 24 24">
+            <path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1 .1.6 2.3-.2 2.9 1.2.1 2.4-.3 3.4-.9-.1-.4-.2-.8-.2-1.3v-2.8c0-.4.1-.7.3-1-2.7-.3-5.5-1.4-5.5-6a4.6 4.6 0 011.2-3.2 4.2 4.2 0 01.1-3.2s1-.3 3.3 1.2a11.3 11.3 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2a4.2 4.2 0 01.1 3.2 4.6 4.6 0 011.2 3.2c0 4.6-2.8 5.7-5.5 6 .3.3.4.6.4 1.1v3.2c0 .3.2.7.8.6A12 12 0 0012 .5z"/>
+          </svg>
+        </a>
+
+      </div>
+
+      <div style="
+        position: absolute;
+        top: 78px;
+        right: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      ">
+
+        <!-- Portfolio bubble -->
+        <a class="link-bubble"
+           href="https://moukthika-gunapaneedu.github.io/portfolio-website/"
+           target="_blank"
+           style="display: flex; align-items: center; gap: 8px;
+                  border: 2px solid var(--green-soft);">
+
+          Portfolio
+        </a>
+
+        <!-- Email bubble -->
+        <a class="link-bubble"
+           href="mailto:moukthikagunapaneedu@gmail.com"
+           style="display: flex; align-items: center; gap: 8px;
+                  border: 2px solid var(--green-soft);">
+
+          moukthikagunapaneedu@gmail.com
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
   </main>
 
   <footer>
     EcoSort · AI-assisted waste classification for cleaner, smarter recycling.
   </footer>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousel = document.getElementById("gradcam-carousel");
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll(".gradcam-slide"));
+      const dots   = Array.from(carousel.querySelectorAll(".gradcam-dot"));
+      const prev   = carousel.querySelector(".gradcam-nav.prev");
+      const next   = carousel.querySelector(".gradcam-nav.next");
+
+      if (!slides.length || !prev || !next) return;
+
+      let current = 0;
+
+      function showSlide(index) {
+        current = (index + slides.length) % slides.length;
+
+        slides.forEach((s, i) => s.classList.toggle("active", i === current));
+        dots.forEach((d, i) => d.classList.toggle("active", i === current));
+      }
+
+      prev.addEventListener("click", () => showSlide(current - 1));
+      next.addEventListener("click", () => showSlide(current + 1));
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const idx = parseInt(dot.getAttribute("data-index"), 10);
+          if (!Number.isNaN(idx)) showSlide(idx);
+        });
+      });
+
+      // Make sure initial state is correct
+      showSlide(0);
+    });
+  </script>
 
 </body>
 </html>
