@@ -89,6 +89,7 @@ The script overlays heatmaps on top of the input image and saves them under `res
 A narrative write-up of the project, including figures and Grad-CAM examples, is available here:
 
 - **EcoSort project page:** https://moukthika-gunapaneedu.github.io/EcoSort/
+- **Video Walkthrough:** https://youtu.be/G9AYnBi_hCA
 
 ---
 
